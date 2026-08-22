@@ -4,7 +4,6 @@ import requests
 import pandas as pd
 import time
 from datetime import timedelta
-from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import yfinance as yf
 import matplotlib.pyplot as plt
 import streamlit as st
