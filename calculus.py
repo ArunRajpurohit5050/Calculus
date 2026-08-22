@@ -1,10 +1,8 @@
 import numpy as np
 import os
-import requests
 import pandas as pd
 import time
 from datetime import timedelta
-import yfinance as yf
 import matplotlib.pyplot as plt
 import streamlit as st
 
