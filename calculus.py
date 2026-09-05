@@ -252,8 +252,8 @@ if len(final_dir) != len(y_test_dir):
 else:
         print("lengths are equal")
 
-st.write("#simulating ai trading")
-st.write("##initial ai money: ", ai_money)
+st.write("**simulating ai trading**")
+st.write("**initial ai money: **", ai_money)
 
 for i in range(len(final_dir)):
      print(i)
@@ -282,17 +282,17 @@ for i in range(len(final_dir)):
             stock_money = 0
             stock_own = 0
      print(f"ai money: {ai_money}, stock money: {stock_money}")
-print("final ai money: ", ai_money)
-print("final stock money: ", stock_money)
-print("final stock own: ", stock_own)
+print("**final ai money: **", ai_money)
+print("**final stock money: **", stock_money)
+print("**final stock own: **", stock_own)
 final_money = ai_money + stock_money + (price_fluc * stock_own)
-print("final summary", final_money)
+print("**final summary: **", final_money)
 accuracy = np.mean(final_dir == y_test_dir) * 100
 
-st.write("##final ai money: ", ai_money)
-st.write("##final money on stocks: ", stock_money)
-st.write("##final stocks owned: ", stock_own)
-st.write("##final sum: ", final_money)
+st.write("final ai money: ", ai_money)
+st.write("final money on stocks: ", stock_money)
+st.write("final stocks owned: ", stock_own)
+st.write("final sum: ", final_money)
 
 st.metric(label="price direction accuracy: ", value= accuracy)
 
