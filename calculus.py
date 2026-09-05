@@ -290,7 +290,7 @@ else:
         print("lengths are equal")
 
 st.header("**simulating ai trading**")
-st.subheader("initial ai money: ", ai_money)
+st.subheader(f"initial ai money: {ai_money}")
 
 for i in range(len(final_dir)):
      print(i)
@@ -325,7 +325,7 @@ print("**final stock own: **", stock_own)
 final_money = ai_money + stock_money + (price_fluc * stock_own)
 print("**final summary: **", final_money)
 
-st.subheader("final ai money: ", ai_money)
-st.subheader("final money on stocks: ", stock_money)
-st.subheader("final stocks owned: ", stock_own)
-st.subheader("final sum: ", final_money)
+st.subheader(f"final ai money: {ai_money}")
+st.subheader(f"final money on stocks: {stock_money}")
+st.subheader(f"final stocks owned: {stock_own}")
+st.subheader(f"final sum: {final_money}")
