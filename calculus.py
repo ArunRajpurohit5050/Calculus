@@ -253,7 +253,7 @@ else:
         print("lengths are equal")
 
 st.write("**simulating ai trading**")
-st.write("**initial ai money: **", ai_money)
+st.write("initial ai money: ", ai_money)
 
 for i in range(len(final_dir)):
      print(i)
