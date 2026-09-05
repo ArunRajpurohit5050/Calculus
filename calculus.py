@@ -31,7 +31,9 @@ if not key:
     key = st.secrets["poly_api"]
 
 ticker = yf.Ticker(tick_name)
+st.write("checking for new data")
 @st.cache_data(ttl=86400)
+
 def update_stock_data():
     matrix = tick_matrix
 
@@ -136,7 +138,7 @@ learn_rate = 0.002
 epochs = 5000
 scale_factor = 100
 window_size = 10
-
+st.write("loading data")
 @st.cache_data
 def load_data(mat):
     return pd.read_csv(mat, index_col=0, parse_dates=True)
@@ -190,6 +192,7 @@ y_dir = make_matrix_ud(data, window_size)
 total_rows = len(x)
 split = int(len(x) *0.8)
 
+st.write("splitting data into training and testing sets")
 #data split ---
 x_train = x[:split]
 y_train = y[:split]
@@ -214,6 +217,7 @@ weights = np.random.randn(x_train.shape[1]) * 0.01
 bias = np.zeros(1)
 price_day = x_test[:,-4]
 
+st.subheader("**training ai**")
 
 for epoch in range(epochs):
     prediction = np.dot(x_train,weights)+ bias
@@ -330,7 +334,7 @@ st.subheader(f"final money on stocks: {stock_money}")
 st.subheader(f"final stocks owned: {stock_own}")
 st.subheader(f"final sum: {final_money}")
 
-st.header("**Ai test runs with different stocks**")
+st.subheaderheader("**Ai test runs with different stocks**")
 st.subheader("Name    Low      High   Simulation")
 st.write("AAPL - 50.40% - 52.41%  10083")
 st.write("META - 51.61% - 52.82%  9168")
