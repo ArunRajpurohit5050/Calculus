@@ -13,7 +13,7 @@ tick_name = "JNJ"
 tick_matrix = f"{tick_name}5y_matrix.csv"
 
 st.title(f"{tick_name} stock predictor")
-st.write("Built for macondo hack club")
+st.write("**Built for macondo hack club**")
 
 #check latest date
 
@@ -334,7 +334,7 @@ st.subheader(f"final money on stocks: {stock_money}")
 st.subheader(f"final stocks owned: {stock_own}")
 st.subheader(f"final sum: {final_money}")
 
-st.subheaderheader("**Ai test runs with different stocks**")
+st.subheader("**Ai test runs with different stocks**")
 st.subheader("Name    Low      High   Simulation")
 st.write("AAPL - 50.40% - 52.41%  10083")
 st.write("META - 51.61% - 52.82%  9168")
