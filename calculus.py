@@ -252,8 +252,8 @@ if len(final_dir) != len(y_test_dir):
 else:
         print("lengths are equal")
 
-st.write("simulating ai trading")
-st.write("initial ai money: ", ai_money)
+st.write("#simulating ai trading")
+st.write("##initial ai money: ", ai_money)
 
 for i in range(len(final_dir)):
      print(i)
@@ -289,10 +289,10 @@ final_money = ai_money + stock_money + (price_fluc * stock_own)
 print("final summary", final_money)
 accuracy = np.mean(final_dir == y_test_dir) * 100
 
-st.write("final ai money: ", ai_money)
-st.write("final money on stocks: ", stock_money)
-st.write("final stocks owned: ", stock_own)
-st.write("final sum: ", final_money)
+st.write("##final ai money: ", ai_money)
+st.write("##final money on stocks: ", stock_money)
+st.write("##final stocks owned: ", stock_own)
+st.write("##final sum: ", final_money)
 
 st.metric(label="price direction accuracy: ", value= accuracy)
 
@@ -325,7 +325,7 @@ for i in range(len(final_dir)):
           plt.scatter(i, y_plot[i], color="red", s=20)
 plt.scatter([],[], color="green", label="correct")
 plt.scatter([],[], color="red", label="wrong")
-plt.title("ai vs actual:AAPL")
+plt.title(f"ai vs actual:{tick_name}")
 plt.xlabel("test days")
 plt.ylabel("price ($)")
 plt.legend()
