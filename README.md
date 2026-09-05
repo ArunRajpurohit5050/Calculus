@@ -15,10 +15,15 @@ An agent made using numpy which extracts a stock price and news and then uses it
 
 >It then uses the results to do a simulation trade
 
-To use
+**To use**
 open webiste "https://calculus-uyiv.onrender.com/"
-or 
-run python script
+
+or
+
+run this command "pip install numpy pandas requests vaderSentiment yfinance matplotlib streamlit"
+and then run this command in the terminal "streamlit run calculus.py"
+
+**note**: make a .env file and add your massive.com api key in this format "poly_api = your api key here" to run the file correctly
 
 **note**: To change the stock to predict just the change the tick_name in the calculus.py 
 
