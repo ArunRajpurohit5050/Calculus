@@ -326,5 +326,5 @@ plt.xlabel("test days")
 plt.ylabel("price ($)")
 plt.legend()
 st.pyplot(plt)
-plt.show()
+
      
