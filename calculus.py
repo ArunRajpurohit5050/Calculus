@@ -23,8 +23,12 @@ print("matrix is: ", tick_matrix)
 #comare and get data
 analyze = SentimentIntensityAnalyzer()
 
-key =  st.secrets["poly_api"]
+key =  os.environ.get("poly_api")
 raw_day_score={}
+
+if not key:
+    st.error("API key not found. Please set the 'poly_api' environment variable.")
+    key = st.secrets["poly_api"]
 
 ticker = yf.Ticker(tick_name)
 @st.cache_data(ttl=86400)
