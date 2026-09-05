@@ -1,4 +1,7 @@
-streamlit
-pandas
 numpy
+requests
+pandas
+vaderSentiment
+yfinance
 matplotlib
+streamlit
