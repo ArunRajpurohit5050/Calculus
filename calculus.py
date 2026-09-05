@@ -236,6 +236,43 @@ print("done training")
 #final day direction ---
 final_dir_raw = sigmod(np.dot(x_test,weight_dir)+ bias_dir)
 final_dir = (final_dir_raw>=0.5).astype(int)
+accuracy = np.mean(final_dir == y_test_dir) * 100
+st.metric(label="price direction accuracy: ", value= accuracy)
+
+
+print("train")
+#final day price ---
+
+final_day_raw = np.dot(x_test,weights)+bias
+final_day = np.clip(final_day_raw,-0.05,0.05)
+final_error = y_test - final_day_raw
+final_loss = np.mean(final_error ** 2)
+
+st.header("**AI training results**")
+
+st.metric(label="bias: ", value=float(bias[0]))
+st.metric(label="loss: ", value=final_loss)
+
+
+final_day_change = (price_day + final_day)* scale_factor
+y_plot = (y_test + price_day)*scale_factor
+
+#graph ---
+plt.plot(y_plot, label=f"actual {tick_name} price", color="blue")
+plt.plot(final_day_change, label=f"predicted {tick_name} price", color="red", linestyle="dashed")
+for i in range(len(final_dir)):
+     if final_dir[i] == y_test_dir[i]:
+          plt.scatter(i, y_plot[i], color="green", s=20)
+     else:
+          plt.scatter(i, y_plot[i], color="red", s=20)
+plt.scatter([],[], color="green", label="correct")
+plt.scatter([],[], color="red", label="wrong")
+plt.title(f"ai vs actual:{tick_name}")
+plt.xlabel("test days")
+plt.ylabel("price ($)")
+plt.legend()
+st.pyplot(plt)
+
 ai_money = 10000
 stock_money = 0
 average_price = 0
@@ -252,7 +289,7 @@ if len(final_dir) != len(y_test_dir):
 else:
         print("lengths are equal")
 
-st.write("**simulating ai trading**")
+st.header("**simulating ai trading**")
 st.write("initial ai money: ", ai_money)
 
 for i in range(len(final_dir)):
@@ -287,48 +324,8 @@ print("**final stock money: **", stock_money)
 print("**final stock own: **", stock_own)
 final_money = ai_money + stock_money + (price_fluc * stock_own)
 print("**final summary: **", final_money)
-accuracy = np.mean(final_dir == y_test_dir) * 100
 
 st.write("final ai money: ", ai_money)
 st.write("final money on stocks: ", stock_money)
 st.write("final stocks owned: ", stock_own)
 st.write("final sum: ", final_money)
-
-st.metric(label="price direction accuracy: ", value= accuracy)
-
-
-print("train")
-#final day price ---
-
-final_day_raw = np.dot(x_test,weights)+bias
-final_day = np.clip(final_day_raw,-0.05,0.05)
-final_error = y_test - final_day_raw
-final_loss = np.mean(final_error ** 2)
-st.metric(label="bias: ", value=float(bias[0]))
-st.metric(label="loss: ", value=final_loss)
-
-
-np.save("weights.npy", weights)
-np.save("bias.npy", bias)
-
-
-final_day_change = (price_day + final_day)* scale_factor
-y_plot = (y_test + price_day)*scale_factor
-
-#graph ---
-plt.plot(y_plot, label=f"actual {tick_name} price", color="blue")
-plt.plot(final_day_change, label=f"predicted {tick_name} price", color="red", linestyle="dashed")
-for i in range(len(final_dir)):
-     if final_dir[i] == y_test_dir[i]:
-          plt.scatter(i, y_plot[i], color="green", s=20)
-     else:
-          plt.scatter(i, y_plot[i], color="red", s=20)
-plt.scatter([],[], color="green", label="correct")
-plt.scatter([],[], color="red", label="wrong")
-plt.title(f"ai vs actual:{tick_name}")
-plt.xlabel("test days")
-plt.ylabel("price ($)")
-plt.legend()
-st.pyplot(plt)
-
-     
