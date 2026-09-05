@@ -335,7 +335,7 @@ st.subheader(f"final stocks owned: {stock_own}")
 st.subheader(f"final sum of money: {final_money}")
 
 st.subheader("**Ai test runs with different stocks**")
-st.write("Name    Low      High   Simulation(money)")
+st.write("Name  -  Low   -   High  -  Simulation(money)")
 st.write("**AAPL  -   50.40%  -  52.41%   10083**")
 st.write("**META  -   51.61%  -  52.82%   9168**")
 st.write("**NVDA  -   47.38%  -  51.20%   10225**")
