@@ -1,4 +1,5 @@
-Calculus 
+**Calculus**
+
 An agent made using numpy which extracts a stock price and news and then uses it to get the next day price prediction.Nothing related to calculus just thought it sounded cool
 
 **How it works**
@@ -10,7 +11,7 @@ An agent made using numpy which extracts a stock price and news and then uses it
 >It then use pandas library to make or update the data
  or use the extracter script to extract data for any period of time
 
->Finally it uses numpy to do the prediction for the stock
+>Finally it uses numpy to train the prediction model and make the predictions for the stock
 
 >It then uses the results to do a simulation trade
 
